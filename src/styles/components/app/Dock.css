@@ -1,0 +1,11 @@
+/* ============================================================
+   Arise Studio · 04 CHROME / iOS Dock
+   对应：src/components/app/Shell.tsx 的 Dock
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   来源：原 src/app/globals.css · 04 区块 iOS Dock 段（规则原样保留）
+   ============================================================ */
+.bottom{position:fixed;z-index:29;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:3px;align-items:center;padding:7px;background:var(--glass-strong);backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%);border:1px solid var(--separator);border-radius:var(--r-pill);box-shadow:var(--sh-2)}
+.bottom button{border:0;background:transparent;padding:9px 17px;font-size:13px;font-weight:560;color:var(--secondary);border-radius:var(--r-pill)}
+.bottom button:hover{color:var(--label);background:var(--fill)}
+.bottom button.primary,.bottom button.is-active{background:var(--accent-fill);color:var(--on-accent);box-shadow:0 4px 14px var(--accent-soft)}
+.bottom .dock-sep{width:1px;height:20px;background:var(--separator);margin:0 3px}

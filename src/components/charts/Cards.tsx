@@ -1,5 +1,6 @@
 "use client";
 
+// 样式：src/styles/components/charts/Cards.css + components/ui/common.css 的 .card / .btn 基础
 /**
  * 卡片组件 —— 对应原型 card(p,i) 与 note(n,i) 函数。
  */

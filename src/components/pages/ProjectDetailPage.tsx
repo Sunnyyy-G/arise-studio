@@ -1,5 +1,6 @@
 "use client";
 
+// 样式：src/styles/pages/ProjectDetailPage.css（detail / article / toc，由 src/app/layout.tsx 统一按序引入）
 /**
  * PROJECT DETAIL 页 —— 对应原型 render() page==='project' 分支。
  */

@@ -1,0 +1,79 @@
+/* ============================================================
+   Arise Studio · 06 DATA VISUALIZATION
+   对应：src/components/charts/Charts.tsx（Metric / Donut / Bars / Gantt /
+        Matrix / FlowChart / NoteChart / TagBars / Dashboard）
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   来源：原 src/app/globals.css · 06 区块（规则原样保留）
+         timeline-list 已按页面归属拆到 pages/ResumePage.css
+   ============================================================ */
+.dash{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4);margin-bottom:var(--s5)}
+.metric{background:var(--surface);border:1px solid var(--separator);border-radius:var(--r-m);padding:var(--s5) var(--s5) var(--s4);box-shadow:var(--sh-1)}
+.metric .m-label{font:600 11px var(--font-mono);letter-spacing:.13em;color:var(--tertiary);text-transform:uppercase}
+.metric .m-value{font:730 clamp(32px,3.5vw,46px)/1.1 var(--font-sans);letter-spacing:-.055em;margin:10px 0 4px;font-variant-numeric:tabular-nums}
+.metric .m-value em{font-style:normal;font-size:16px;font-weight:600;color:var(--tertiary);letter-spacing:0;margin-left:4px}
+.metric .m-sub{font-size:12.5px;color:var(--secondary)}
+.metric .m-spark{margin-top:12px;height:24px;width:100%}
+.chart-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:var(--s5)}
+.chart-card{background:var(--surface);border:1px solid var(--separator);border-radius:var(--r-l);padding:var(--s6);box-shadow:var(--sh-1);min-width:0}
+.chart-card .c-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:var(--s5)}
+.chart-card .c-title{font-size:16px;font-weight:680;letter-spacing:-.02em}
+.chart-card .c-sub{font-size:12px;color:var(--tertiary);margin-top:3px}
+.chart-card .c-chip{font:600 10.5px var(--font-mono);letter-spacing:.1em;color:var(--accent-ink);background:var(--accent-soft);padding:5px 9px;border-radius:var(--r-pill);white-space:nowrap}
+/* Donut */
+.donut-wrap{display:flex;align-items:center;gap:var(--s6);flex-wrap:wrap}
+.donut-wrap svg{width:178px;height:178px;flex:none;overflow:visible}
+.donut-seg{stroke-dasharray:0 999;transition:stroke-dasharray 1.05s var(--ease-out),opacity var(--d1) var(--ease);cursor:pointer;transform:rotate(-90deg);transform-origin:center}
+.chart-card.in .donut-seg{stroke-dasharray:var(--dash)}
+.donut-seg:hover{opacity:.72}
+.donut-center{font:730 34px/1 var(--font-sans);letter-spacing:-.05em;fill:var(--label);font-variant-numeric:tabular-nums}
+.donut-center-s{font:600 10px var(--font-mono);letter-spacing:.14em;fill:var(--tertiary)}
+.legend{display:flex;flex-direction:column;gap:11px;flex:1;min-width:130px}
+.legend-item{display:flex;align-items:center;gap:9px;font-size:13px;cursor:pointer;border-radius:var(--r-s);padding:3px 5px;transition:background-color var(--d1) var(--ease)}
+.legend-item:hover{background:var(--fill)}
+.legend-item i{width:10px;height:10px;border-radius:3px;flex:none}
+.legend-item b{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:650}
+/* Bars */
+.bars{display:flex;flex-direction:column;gap:11px}
+.bar-row{display:grid;grid-template-columns:92px minmax(0,1fr) 26px;align-items:center;gap:12px;cursor:pointer;border-radius:var(--r-s);padding:2px 4px;transition:background-color var(--d1) var(--ease)}
+.bar-row:hover{background:var(--fill)}
+.bar-label{font-size:13px;font-weight:560;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{height:12px;border-radius:var(--r-pill);background:var(--fill);overflow:hidden}
+.bar-fill{display:block;height:100%;width:0;border-radius:var(--r-pill);background:var(--c);transition:width 1s var(--ease-out) var(--d,0s)}
+.chart-card.in .bar-fill{width:var(--w)}
+.bar-val{font:650 13px var(--font-mono);text-align:right;color:var(--secondary);font-variant-numeric:tabular-nums}
+/* Timeline gantt */
+.tl-svg{width:100%;height:auto;display:block;overflow:visible}
+.tl-svg .tl-grid{stroke:var(--separator);stroke-width:1;stroke-dasharray:3 5}
+.tl-svg .tl-label{fill:var(--label);font:560 12px var(--font-sans)}
+.tl-svg .tl-sub{fill:var(--tertiary);font:500 10px var(--font-mono);letter-spacing:.05em}
+.tl-svg .tl-bar{transform-box:fill-box;transform-origin:left center;transform:scaleX(0);transition:transform .95s var(--ease-out) var(--d,0s)}
+.chart-card.in .tl-svg .tl-bar{transform:scaleX(1)}
+.tl-svg .tl-bar:hover{filter:brightness(1.12)}
+/* Matrix */
+.matrix{display:grid;grid-template-columns:118px repeat(var(--cols),minmax(0,1fr));gap:6px;align-items:center}
+.matrix .mx-h{font:600 10.5px var(--font-mono);color:var(--tertiary);text-align:center;writing-mode:vertical-rl;transform:rotate(180deg);height:74px;margin:0 auto;white-space:nowrap}
+.matrix .mx-row{font-size:12px;color:var(--secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.matrix .mx-cell{height:30px;border-radius:9px;background:var(--fill);opacity:0;transform:scale(.7);transition:opacity .4s var(--ease-out) var(--d,0s),transform .4s var(--ease) var(--d,0s),box-shadow var(--d1) var(--ease);cursor:pointer}
+.chart-card.in .matrix .mx-cell{opacity:1;transform:scale(1)}
+.matrix .mx-cell.on{background:var(--accent);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.matrix .mx-cell:hover{box-shadow:0 0 0 3px var(--accent-soft)}
+.matrix .mx-corner{font:600 10px var(--font-mono);color:var(--tertiary);letter-spacing:.1em}
+/* Flow */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;position:relative}
+.flow-node{position:relative;background:var(--surface-2);border:1px solid var(--separator);border-radius:var(--r-m);padding:var(--s5) var(--s4);text-align:center;opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease-out) var(--d,0s),transform .5s var(--ease-out) var(--d,0s),border-color var(--d2) var(--ease),box-shadow var(--d2) var(--ease)}
+.chart-card.in .flow-node{opacity:1;transform:none}
+.flow-node:hover{border-color:var(--accent);box-shadow:var(--sh-2)}
+.flow-node .f-no{font:700 11px var(--font-mono);color:var(--accent-ink);letter-spacing:.1em}
+.flow-node .f-name{font-size:15px;font-weight:650;margin-top:9px;letter-spacing:-.02em}
+.flow-node .f-line{position:absolute;top:50%;right:-11px;width:12px;height:1px;background:var(--separator);z-index:2}
+.flow-node:last-child .f-line{display:none}
+.flow-node .f-dot{position:absolute;top:calc(50% - 2px);right:-11px;width:4px;height:4px;border-radius:50%;background:var(--accent);animation:flow 2.6s linear infinite;animation-delay:var(--d,0s)}
+.flow-node:last-child .f-dot{display:none}
+.flow-cap{margin-top:var(--s4);text-align:center;font-size:13px;color:var(--secondary)}
+.data-note{font-size:12.5px;line-height:1.8;color:var(--tertiary);margin-top:var(--s5);padding:var(--s4) var(--s5);background:var(--surface-2);border:1px solid var(--separator);border-radius:var(--r-m)}
+/* mini visuals */
+.spark{width:100%;height:24px;display:block}
+.spark polyline{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.1s var(--ease-out) .2s}
+.chart-card.in .spark polyline,.metric.in .spark polyline{stroke-dashoffset:0}
+/* Tooltip */
+#chartTip{position:fixed;z-index:90;pointer-events:none;opacity:0;transform:translate(-50%,-130%);background:var(--glass-strong);backdrop-filter:blur(20px);border:1px solid var(--separator);border-radius:var(--r-s);box-shadow:var(--sh-2);padding:9px 13px;font-size:12.5px;color:var(--label);white-space:nowrap;transition:opacity var(--d1) var(--ease)}

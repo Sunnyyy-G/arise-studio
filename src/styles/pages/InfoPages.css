@@ -1,0 +1,10 @@
+/* ============================================================
+   Arise Studio · 信息页样式归属
+   对应：src/components/pages/InfoPages.tsx（About / Contact / Privacy / 404）
+   本页没有专属选择器，全部复用以下已按组件拆分的样式：
+     - components/ui/common.css       .page-head / .grid / .card / .note / .btn
+     - pages/ProjectDetailPage.css    .article（About / Privacy）
+     - pages/ProjectsPage.css         .empty / .empty h1（404）
+     - components/charts/Charts.css   .chart-card / .flow-*（About 的 FlowChart）
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   ============================================================ */

@@ -1,5 +1,6 @@
 "use client";
 
+// 样式：src/styles/pages/HomePage.css（hero / portrait / stats，由 src/app/layout.tsx 统一按序引入）
 /**
  * HOME 页 —— 对应原型 render() 中 page==='home' 分支，逐段还原。
  */

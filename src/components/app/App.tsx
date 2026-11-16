@@ -1,5 +1,6 @@
 "use client";
 
+// 样式：src/styles/base/motion.css 的 .page 入场动画（由 src/app/layout.tsx 统一按序引入）
 /**
  * 主应用壳 —— 对应原型 render() 的页面分发（$('app').innerHTML=...)。
  * 保持原型的单页应用（SPA + hash 路由）架构：一个页面组件树，

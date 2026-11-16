@@ -1,0 +1,26 @@
+/* ============================================================
+   Arise Studio · 02 BASE
+   对应：全站元素基线（body / button / a / 标题 / 通用文本类）
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   来源：原 src/app/globals.css · 02 区块（规则原样保留）
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--label);font:16px/1.7 var(--font-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter-spacing:-.01em;transition:background-color var(--d2) var(--ease),color var(--d2) var(--ease)}
+html[data-density="compact"] body{font-size:15px}
+button,input,select{font:inherit;color:inherit}
+button,a{cursor:pointer;-webkit-tap-highlight-color:transparent}
+button{border:1px solid var(--separator);background:var(--surface);border-radius:var(--r-pill);padding:11px 19px;transition:transform var(--d1) var(--ease),background-color var(--d1) var(--ease),border-color var(--d1) var(--ease),box-shadow var(--d1) var(--ease),color var(--d1) var(--ease)}
+button:hover{border-color:var(--accent);color:var(--accent-ink)}
+button:active{transform:scale(.96)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+a{color:var(--accent-ink);text-decoration:none}
+h1,h2,h3,h4{line-height:1.16;margin:0;letter-spacing:-.035em;font-weight:700}
+h1{font-size:clamp(44px,6.1vw,84px);letter-spacing:-.055em;font-weight:750}
+h2{font-size:clamp(26px,3vw,38px);letter-spacing:-.04em}
+h3{font-size:21px;letter-spacing:-.025em}
+p{margin:0;color:var(--secondary);text-wrap:pretty}
+::selection{background:var(--accent-soft);color:var(--label)}
+.muted{font-size:12.5px;color:var(--tertiary)}
+.eyebrow{display:inline-block;font:600 11.5px/1.4 var(--font-mono);letter-spacing:.19em;text-transform:uppercase;color:var(--accent-ink)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}

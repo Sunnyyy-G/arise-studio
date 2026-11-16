@@ -1,5 +1,6 @@
 "use client";
 
+// 样式：src/styles/pages/ProjectsPage.css（filters / empty，由 src/app/layout.tsx 统一按序引入）
 /**
  * PROJECTS 页 —— 对应原型 render() page==='projects' + drawProjects()。
  */

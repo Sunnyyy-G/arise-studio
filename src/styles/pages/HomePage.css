@@ -1,0 +1,30 @@
+/* ============================================================
+   Arise Studio · 05 COMPONENTS / 首页 Hero 与能力条
+   对应：src/components/pages/HomePage.tsx（hero / portrait / CapStat）
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   来源：原 src/app/globals.css · 05 区块 Hero / Capability stats 段（规则原样保留）
+   ============================================================ */
+/* Hero */
+.hero{display:grid;grid-template-columns:1.42fr .88fr;align-items:center;gap:var(--s16);padding:var(--s8) 0 var(--s12)}
+.hero h1{margin:var(--s5) 0 var(--s6)}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln>span{display:block;animation:lineUp .8s var(--ease-out) both;animation-delay:calc(.08s + var(--n,0)*.11s)}
+.hero p{font-size:19px;max-width:56ch;line-height:1.8;margin-bottom:var(--s8)}
+.portrait{position:relative;overflow:hidden;padding:var(--s10) var(--s8);min-height:370px;border-radius:var(--r-xl);color:var(--hero-ink);background:linear-gradient(155deg,#1B2434 0%,#111A29 48%,#0A111C 100%);box-shadow:var(--sh-3);display:flex;flex-direction:column;gap:var(--s4);isolation:isolate}
+.portrait::before{content:"";position:absolute;z-index:-1;width:420px;height:420px;right:-140px;top:-150px;border-radius:50%;background:radial-gradient(circle,rgba(0,122,255,.55),transparent 68%);filter:blur(10px);animation:drift 12s ease-in-out infinite}
+.portrait::after{content:"A";position:absolute;z-index:-1;right:-8px;bottom:-96px;font:750 300px/1 var(--font-sans);letter-spacing:-.12em;color:rgba(255,255,255,.055);pointer-events:none}
+.portrait .grid-lines{position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(180deg,rgba(0,0,0,.7),transparent 80%)}
+.portrait p{color:rgba(226,236,248,.72);font-size:13.5px}
+.portrait strong{font-size:clamp(30px,3.2vw,46px);line-height:1.28;letter-spacing:-.045em;color:#fff;font-weight:720}
+.portrait .p-spacer{flex:1}
+.portrait .muted{color:rgba(226,236,248,.45);font-size:11.5px}
+/* Capability stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.stat{background:var(--surface);border:1px solid var(--separator);border-radius:var(--r-m);padding:var(--s5);box-shadow:var(--sh-1);transition:transform var(--d2) var(--ease),box-shadow var(--d2) var(--ease)}
+.stat:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.stat .stat-no{font:600 11px var(--font-mono);letter-spacing:.14em;color:var(--accent-ink)}
+.stat .stat-bar{height:3px;border-radius:3px;background:var(--fill);margin:14px 0 16px;overflow:hidden}
+.stat .stat-bar i{display:block;height:100%;width:0;border-radius:3px;background:var(--accent);transition:width 1.1s var(--ease-out) .15s}
+.stat.in .stat-bar i{width:var(--bar,72%)}
+.stat strong{display:block;font-size:17px;letter-spacing:-.025em;margin-bottom:6px}
+.stat .muted{font-size:12px;display:block}

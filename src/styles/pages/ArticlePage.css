@@ -1,0 +1,8 @@
+/* ============================================================
+   Arise Studio · 文章页样式归属
+   对应：src/components/pages/ArticlePage.tsx
+   本页没有专属选择器，全部复用以下已按组件拆分的样式：
+     - components/ui/common.css       .page-head / .note / .btn
+     - pages/ProjectDetailPage.css    .article / .article section / .article pre
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   ============================================================ */

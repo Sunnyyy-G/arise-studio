@@ -1,5 +1,6 @@
 "use client";
 
+// 样式：src/styles/components/charts/Charts.css（由 src/app/layout.tsx 统一按序引入）
 /**
  * 数据可视化构件 —— 逐一对应原型函数：
  * metric() / donut() / bars() / gantt() / matrix() / flowChart() / noteChart() / dashboard()

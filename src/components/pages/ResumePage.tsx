@@ -1,5 +1,6 @@
 "use client";
 
+// 样式：src/styles/pages/ResumePage.css（timeline-list，由 src/app/layout.tsx 统一按序引入）
 /**
  * RESUME 页 —— 对应原型 render() page==='resume' 分支。
  */

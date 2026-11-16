@@ -1,0 +1,18 @@
+/* ============================================================
+   Arise Studio · 05 COMPONENTS / 文档型页面布局
+   对应：src/components/pages/ProjectDetailPage.tsx
+        （.article / .toc 由 ArticlePage.tsx、InfoPages.tsx 复用）
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   来源：原 src/app/globals.css · 05 区块 detail / article / toc 段（规则原样保留）
+   ============================================================ */
+.detail{display:grid;grid-template-columns:minmax(0,1fr) 236px;gap:var(--s12)}
+.article{max-width:800px}
+.article section{margin:var(--s10) 0}
+.article section h2{margin-bottom:var(--s4);font-size:26px}
+.article p{font-size:16px;line-height:1.85;margin:12px 0}
+.article pre{padding:var(--s5);background:var(--code-bg);color:var(--code-fg);border-radius:var(--r-m);font:13.5px/1.8 var(--font-mono);overflow:auto}
+.toc{position:sticky;top:96px;height:fit-content;background:var(--surface);border:1px solid var(--separator);border-radius:var(--r-m);padding:10px;box-shadow:var(--sh-1)}
+.toc .toc-title{font:600 11px var(--font-mono);letter-spacing:.14em;color:var(--tertiary);padding:8px 10px;text-transform:uppercase}
+.toc button{display:block;width:100%;text-align:left;border:0;background:transparent;padding:10px 12px;font-size:13.5px;color:var(--secondary);border-radius:var(--r-s)}
+.toc button:hover{background:var(--fill);color:var(--label)}
+.toc .toc-next{border-top:1px solid var(--separator);border-radius:0;margin-top:6px;padding-top:14px;color:var(--accent-ink);font-weight:600}

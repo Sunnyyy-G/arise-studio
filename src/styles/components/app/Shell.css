@@ -1,0 +1,36 @@
+/* ============================================================
+   Arise Studio · 04 CHROME / Shell
+   对应：src/components/app/Shell.tsx 的 Header / ToolsBar / Progress / Footer
+        （.drawer 为 Header 的移动端展开面板）
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   来源：原 src/app/globals.css · 04 区块前半（规则原样保留）
+   ============================================================ */
+.tools{position:relative;z-index:31;background:#111318;color:#C9CFDA;font-size:11.5px;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px max(24px,calc((100% - var(--page-w))/2));letter-spacing:.02em}
+.tools span{opacity:.86}
+.tools button{font-size:11px;padding:4px 11px;background:transparent;border-color:rgba(255,255,255,.22);color:#E6EAF2;border-radius:var(--r-pill)}
+.tools button:hover{border-color:#7DB4FF;color:#fff}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:60;transition:width .12s linear,background-color var(--d2) var(--ease);box-shadow:0 0 12px var(--accent)}
+.shell{min-height:100vh;position:relative;overflow-x:hidden}
+.shell::before{content:"";position:fixed;inset:-20% -10% auto -10%;height:70vh;pointer-events:none;z-index:0;background:radial-gradient(48% 46% at 22% 18%,var(--accent-soft),transparent 70%),radial-gradient(38% 40% at 82% 8%,rgba(88,86,214,.10),transparent 72%);animation:drift 18s ease-in-out infinite}
+html[data-theme="dark"] .shell::before{opacity:.6}
+header{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:var(--s5);padding:14px max(24px,calc((100% - var(--page-w))/2));background:var(--glass);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--separator)}
+.logo{font-size:21px;font-weight:780;letter-spacing:-.045em;white-space:nowrap;user-select:none;transition:opacity var(--d1) var(--ease)}
+.logo:hover{opacity:.7}
+.logo span{color:var(--accent-ink)}
+nav{position:relative;display:flex;gap:2px;align-items:center;padding:4px;background:var(--fill);border-radius:var(--r-pill)}
+nav button{position:relative;z-index:2;border:0;background:transparent;padding:8px 15px;font-size:14px;font-weight:550;border-radius:var(--r-pill);color:var(--secondary)}
+nav button:hover{color:var(--label);background:transparent;border-color:transparent}
+nav button.active{color:var(--label);font-weight:650;background:transparent}
+.nav-ind{position:absolute;z-index:1;top:4px;left:0;height:calc(100% - 8px);border-radius:var(--r-pill);background:var(--surface);box-shadow:0 1px 4px rgba(16,24,40,.12),0 0 0 .5px var(--separator);transition:transform var(--d2) var(--ease),width var(--d2) var(--ease);pointer-events:none}
+html[data-theme="dark"] .nav-ind{box-shadow:0 1px 6px rgba(0,0,0,.5),0 0 0 .5px var(--separator)}
+.hd-actions{display:flex;gap:8px;align-items:center}
+.icon-btn{width:38px;height:38px;padding:0;display:grid;place-items:center;border-radius:50%;background:var(--fill);border-color:transparent}
+.icon-btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icon-btn:hover{background:var(--accent-soft)}
+.menuBtn{display:none}
+.drawer{display:none}
+main{position:relative;z-index:1;max-width:var(--page-w);margin:0 auto;padding:var(--s12) 24px 140px}
+html[data-density="compact"] main{padding-top:var(--s8)}
+html[data-density="compact"] .section{margin:var(--s10) 0}
+footer{position:relative;z-index:1;border-top:1px solid var(--separator);padding:var(--s10) 24px var(--s12);text-align:center;color:var(--tertiary);font-size:13px;line-height:2}
+footer button{font-size:12px;padding:5px 12px;background:transparent;border-color:transparent;color:var(--accent-ink)}

@@ -1,0 +1,10 @@
+/* ============================================================
+   Arise Studio · 知识页样式归属
+   对应：src/components/pages/KnowledgePage.tsx
+   本页没有专属选择器，全部复用以下已按组件拆分的样式：
+     - components/ui/common.css      .page-head / .grid / .card / .badge / .btn
+     - pages/ProjectsPage.css        .filters / .empty（与作品页共用）
+     - components/charts/Cards.css   .note-card（NoteCard 组件）
+     - components/charts/Charts.css  .chart-grid / .chart-card / .donut-* / .bar-*
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   ============================================================ */

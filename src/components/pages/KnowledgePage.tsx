@@ -1,5 +1,6 @@
 "use client";
 
+// 样式：src/styles/pages/KnowledgePage.css 为本页样式归属索引，规则复用 ProjectsPage / Cards / Charts
 /**
  * KNOWLEDGE 页 —— 对应原型 render() page==='knowledge' + drawNotes()。
  */

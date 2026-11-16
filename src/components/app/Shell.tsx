@@ -1,5 +1,6 @@
 "use client";
 
+// 样式：src/styles/components/app/{Shell,Dock,Toast,Tweaks}.css（由 src/app/layout.tsx 统一按序引入）
 /**
  * 应用外壳 —— 对应原型 header / nav / drawer / bottom(dock) /
  * progress / toast / tweak-fab / tweak-panel / footer。

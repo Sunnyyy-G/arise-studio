@@ -1,0 +1,14 @@
+/* ============================================================
+   Arise Studio · 05 COMPONENTS / 作品页筛选与空状态
+   对应：src/components/pages/ProjectsPage.tsx
+        （.filters 由 KnowledgePage.tsx 复用，.empty 由 InfoPages.tsx 复用）
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   来源：原 src/app/globals.css · 05 区块 filters / empty 段（规则原样保留）
+   ============================================================ */
+.filters{display:flex;gap:10px;margin:var(--s6) 0 var(--s8);flex-wrap:wrap}
+.filters input,.filters select{min-height:46px;padding:11px 17px;border:1px solid var(--separator);border-radius:var(--r-m);background:var(--surface);box-shadow:var(--sh-1);outline:none;transition:border-color var(--d1) var(--ease),box-shadow var(--d1) var(--ease)}
+.filters input{min-width:280px;flex:1;background-image:none}
+.filters input:focus,.filters select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.filters .btn{min-height:46px}
+.empty{text-align:center;padding:var(--s16) var(--s6);border:1px dashed var(--separator);border-radius:var(--r-l);background:var(--surface-2)}
+.empty h1{font-size:38px;margin:var(--s4) 0}

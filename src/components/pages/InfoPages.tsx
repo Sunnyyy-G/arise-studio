@@ -1,5 +1,6 @@
 "use client";
 
+// 样式：src/styles/pages/InfoPages.css 为本页样式归属索引，规则复用 common / ProjectDetailPage / ProjectsPage
 /**
  * ABOUT / CONTACT / PRIVACY / 404 页
  * —— 对应原型 render() page==='about'|'contact'|'privacy'|'404' 分支。

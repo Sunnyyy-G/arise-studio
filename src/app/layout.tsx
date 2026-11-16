@@ -1,4 +1,29 @@
-import "./globals.css";
+/**
+ * 全站样式唯一入口：按「设计变量 → 基础 → 动效 → 组件 → 页面 → 响应式 → 打印」
+ * 的层叠顺序引入 src/styles/ 下按组件/页面拆分的样式文件。
+ * Next.js 建议把 CSS import 收敛到单一 TS 入口以保证顺序稳定
+ * （见 node_modules/next/dist/docs/01-app/01-getting-started/11-css.md）。
+ * 注意：common.css 必须早于 Cards.css / Charts.css，responsive.css / print.css 必须最后。
+ */
+import "@/styles/base/tokens.css";
+import "@/styles/base/base.css";
+import "@/styles/base/motion.css";
+import "@/styles/components/app/Shell.css";
+import "@/styles/components/app/Dock.css";
+import "@/styles/components/app/Toast.css";
+import "@/styles/components/ui/common.css";
+import "@/styles/pages/ProjectsPage.css";
+import "@/styles/pages/ProjectDetailPage.css";
+import "@/styles/pages/HomePage.css";
+import "@/styles/components/charts/Cards.css";
+import "@/styles/components/charts/Charts.css";
+import "@/styles/pages/ResumePage.css";
+import "@/styles/pages/KnowledgePage.css";
+import "@/styles/pages/ArticlePage.css";
+import "@/styles/pages/InfoPages.css";
+import "@/styles/components/app/Tweaks.css";
+import "@/styles/responsive.css";
+import "@/styles/print.css";
 import type { Metadata } from "next";
 import { AppProvider } from "@/components/app/AppContext";
 import { Header, Dock, Footer, Progress, Toast, ChartTip, TweaksFab, TweaksPanel, ToolsBar } from "@/components/app/Shell";

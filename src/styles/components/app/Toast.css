@@ -1,0 +1,7 @@
+/* ============================================================
+   Arise Studio · 04 CHROME / Toast
+   对应：src/components/app/Shell.tsx 的 Toast
+   引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
+   来源：原 src/app/globals.css · 04 区块 Toast 段（规则原样保留）
+   ============================================================ */
+#toast{position:fixed;bottom:96px;left:50%;z-index:80;max-width:min(88vw,520px);width:max-content;padding:13px 22px;border-radius:var(--r-pill);background:var(--glass-strong);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--separator);box-shadow:var(--sh-3);color:var(--label);font-size:14px;display:none;animation:toastIn .42s var(--ease) both}
