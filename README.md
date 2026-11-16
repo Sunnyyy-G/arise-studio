@@ -1,12 +1,46 @@
 # Arise Studio
 
-李根 / Li Gen 的前端工程实践作品集，按 `07-iOS简约风交互原型.html` 原型稿 100% 还原。
-单页应用（SPA + hash 路由），完整实现中英双语、深浅主题、主题色/密度/动效档位切换，
-以及图表 0→值过渡、滚动渐显、顶部滚动进度条等动效。
+李根 / Li Gen 的前端工程实践作品集，含 **PC 端**与**移动 H5 端**两套独立还原：
+
+| 端 | 原型稿 | 路由 | 说明 |
+|---|---|---|---|
+| PC | `07-iOS简约风交互原型.html` | `/`（SPA + hash 路由，如 `/#projects`） | 深浅主题、中英双语、Tweaks、图表/动效 |
+| 移动 H5 | `09-iOS简约风移动H5交互原型.html` | `/mobi/home`（如 `/mobi/projects`、`/mobi/project-1`） | 设备框/全屏双模式、push-pop 转场、底部 tabbar、Sheet、状态栏时钟 |
+
+两套页面、两套文件、两套 CSS 完全分离（route group 隔离，互不加载）。
+均完整实现中英双语、深浅主题、主题色/密度/动效档位切换，以及图表 0→值过渡、
+滚动渐显、进度条等动效。
 
 - 框架：Next.js 16.4.4（App Router）/ React 19 / TypeScript
-- 样式：原生 CSS，按页面/组件拆分到 `src/styles/`（不用 Tailwind 运行时）
+- 样式：原生 CSS，PC 在 `src/styles/`、移动端在 `src/styles/mobi/`，均按页面/组件拆分（不用 Tailwind 运行时）
 - 脚本：`dev` / `build` / `start` / `lint`（见 `package.json`）
+
+### 路由与目录对应
+
+```
+src/app/
+├── layout.tsx              根 <html>/<body> 骨架（共享初始 data-* 属性）
+├── (pc)/
+│   ├── layout.tsx          引入 src/styles/*，渲染 PC 外壳 + <App/>
+│   └── page.tsx            PC 入口，路径 /
+└── mobi/
+    ├── layout.tsx          引入 src/styles/mobi/*，与 PC 样式隔离
+    └── [[...slug]]/page.tsx catch-all：/mobi、/mobi/home、/mobi/project-1 …（可直达/刷新）
+```
+
+移动端内部导航用 `history.pushState` + `popstate`（保留 push/pop 转场动效，不触发 Next 跨树跳转），
+**所有跳转目标均为 `/mobi/*`**，页面组件在 `src/components/mobi/`，数据在 `src/lib/mobiData.ts`
+（复用 `src/lib/data.ts` 原始数据）。
+
+### 自动切换到移动端
+
+- `src/proxy.ts`（Next 16 起 `middleware` 已更名 `proxy`）：真实移动 UA 访问 PC 路径时返回
+  引导页，按 `location.hash` 映射到对应 `/mobi/xxx` 后 `replace`（如 `/#projects` → `/mobi/projects`、
+  `/#project-2` → `/mobi/project-2`）。`/mobi/*` 直接放行，静态资源不拦截。
+- `src/components/app/MobiRedirect.tsx`（仅 PC 路由树）：兜底 DevTools 切换设备不刷新的场景。
+- PC ToolsBar 有「移动 H5 ↗」显式入口（`/mobi/home`）。
+- **评审逃生口**：`/?force=pc` 或 cookie `arise-force-pc=1` 可强制留在 PC（桌面浏览器仅缩小窗口不会跳转，
+  判断以 UA 为准）。
 
 ## 本地运行（推荐：生产模式）
 
@@ -63,37 +97,53 @@ Get-CimInstance Win32_Process -Filter "Name = 'node.exe'" |
 ```
 src/
 ├── app/
-│   ├── layout.tsx          全站样式唯一入口：按层叠顺序引入 src/styles/ 下所有 CSS
-│   ├── page.tsx            SPA 入口（返回 null，内容由 <App /> 渲染）
+│   ├── layout.tsx          根 <html>/<body> 骨架（共享初始 data-* 属性）
+│   ├── (pc)/
+│   │   ├── layout.tsx      引入 src/styles/*，渲染 PC 外壳 + <App/>（路径 /）
+│   │   └── page.tsx        PC SPA 入口
+│   ├── mobi/
+│   │   ├── layout.tsx      引入 src/styles/mobi/*，与 PC 样式隔离
+│   │   └── [[...slug]]/    catch-all：/mobi、/mobi/home、/mobi/project-1 …
 │   └── favicon.ico         站点图标（Next 文件约定，自动注入 <head>）
 ├── components/
-│   ├── app/                App / AppContext / Shell / useReveal / useTip
-│   ├── charts/             Charts.tsx / Cards.tsx（图表与卡片组件）
-│   └── pages/              Home / Projects / ProjectDetail / Resume / Knowledge / Article / Info
-├── styles/                 ← CSS 按「页面 / 组件」拆分，全部在 layout.tsx 按序引入
-│   ├── base/               tokens.css（设计变量）/ base.css（基线）/ motion.css（动效）
-│   ├── components/
-│   │   ├── app/            Shell / Dock / Toast / Tweaks
-│   │   ├── charts/         Cards / Charts（含图表 0→值过渡）
-│   │   └── ui/             common.css（通用按钮/区块/栅格/卡片/徽标）
+│   ├── app/                PC：App / AppContext / Shell / useReveal / useTip
+│   ├── charts/             PC：Charts.tsx / Cards.tsx
+│   ├── pages/              PC：Home / Projects / ProjectDetail / Resume / Knowledge / Article / Info
+│   └── mobi/               移动端全套（独立文件，与 PC 不共用组件）
+│       ├── MobiContext.tsx / MobiApp.tsx / MobiCharts.tsx / MobiCards.tsx
+│       └── pages/          MobiHome / MobiProjects / MobiResume / MobiKnowledge / MobiInfo
+├── styles/                 ← PC CSS，按「页面 / 组件」拆分，仅在 (pc)/layout.tsx 按序引入
+│   ├── base/               tokens.css / base.css / motion.css
+│   ├── components/{app,charts,ui}/  Shell / Dock / Toast / Tweaks / Cards / Charts / common
 │   ├── pages/              各页面同名 .css
 │   ├── responsive.css      响应式（必须靠后）
 │   └── print.css           打印（必须最后）
+├── styles/mobi/            ← 移动 H5 CSS，仅在 mobi/layout.tsx 按序引入（与 PC 隔离）
+│   ├── base/               tokens / base / motion
+│   ├── components/{app,charts,ui}/  chrome / Sheets / Cards / Charts / common
+│   ├── pages/HomePage.css  Hero / Capability
+│   └── fullscreen.css      全屏 H5 模式 + 打印（必须最后）
 ├── images/                 ← 图片素材
 │   ├── icons/              通用图标 svg
-│   └── index.ts            素材清单（BRAND_ASSETS / ICON_ASSETS / RESUME_ASSETS）
-└── lib/data.ts             全站数据（项目 / 知识 / 经历，中英双语）
+│   └── index.ts            素材清单
+└── lib/
+    ├── data.ts             全站原始数据（项目 / 知识 / 经历，中英双语，PC 与移动端共用）
+    ├── mobiData.ts         移动端数据（复用 data.ts + stepper 时间轴行 / ICONS）
+    └── mobiConfig.ts       移动端路由常量与类型（Server/Client 共用的纯数据）
 public/resume/               简历 PDF（需公开 URL 直链，按 Next 规范放 public）
 ```
 
 ### CSS 拆分约定
 
-- **所有 `@/styles/*.css` 的 import 只写在 `src/app/layout.tsx`**，组件内不要各自 import CSS，
-  否则构建后的层叠顺序不稳定，会破坏动效与主题覆盖。
-- 引入顺序固定：`tokens → base → motion → components → pages → responsive → print`。
-  其中 `common.css` 必须早于 `Cards.css` / `Charts.css`，`responsive.css` / `print.css` 必须最后。
-- 新增页面/组件样式时：在对应 `styles/pages/` 或 `styles/components/` 建同名文件，
-  再到 `layout.tsx` 按上述顺序补一行 import。
+- **两套 CSS 由各自 layout 独立引入**（`(pc)/layout.tsx` 引 `styles/*`，`mobi/layout.tsx` 引
+  `styles/mobi/*`）。两个路由树不会同时加载，因此同名类（`.card/.btn/.reveal/.metric` 等）互不覆盖。
+  **不要把移动端 CSS 引到 PC 的 layout，也不要把 `@/styles/*.css` 从 `"use client"` 组件里 import。**
+- 每个 layout 内 import 只集中在自己文件，组件内不各自 import CSS，保证层叠顺序稳定。
+- PC 引入顺序：`tokens → base → motion → components → pages → responsive → print`
+  （`common.css` 早于 `Cards/Charts`，`responsive/print` 最后）。
+- 移动端引入顺序：`tokens → base → motion → chrome → common → HomePage → Cards → Charts → Sheets → fullscreen`
+  （`fullscreen.css` 必须最后，覆盖设备框）。
+- 新增样式：在对应 `styles/pages/`（或 `styles/mobi/...`）建同名文件，再到对应 layout 按序补一行 import。
 
 ### 图片素材说明
 
@@ -120,8 +170,25 @@ public/resume/               简历 PDF（需公开 URL 直链，按 Next 规范
 - 主题 / 主题色 / 密度 / 动效档位（完整·精简·关闭）在 `AppContext` 中管理，写入
   `<html data-*>`，并持久化到 localStorage。
 
+移动端（`/mobi/*`）额外：
+
+- 设备框 / 全屏双模式：`data-frame` + `@media(max-width:760px)`；窄屏（真机）自动全屏，
+  隐藏 statusbar / home-ind / stage-tools，navbar 与 tabbar 适配 safe-area。
+- push/pop 转场：`.page`(pushIn) / `.page.pop`(popIn)，由 `MobiContext.go()` 依据页面关系判定方向；
+  浏览器前进/后退经 `popstate` 用 pop 方向重放。
+- 动效集中挂载：`MobiApp.tsx` 的 `mount()` 以 `#mobiApp` 为 IntersectionObserver 的 root
+  （不是 window），对视口内 chart-card/metric/cap 同步加 `.in` 触发 0→值；数字 `0→N` 缓出计数。
+- 图表形态与 PC 不同：stepper 纵向时间轴、横向滚动 matrix、纵向 flow、2 列 metric/cap 列表。
+- 顶部进度条随 `#mobiApp` 滚动变化，滚动 >56px 时 navbar 切紧凑态（`.screen.compact`）。
+- 状态栏时钟、菜单 Sheet、Tweaks（含设备框/全屏预览档）、搜索筛选、图表点击联动全部还原。
+- **navbar 贴顶过渡**：`#mobiApp` 滚动 >56px 时 `#screen` 加 `.compact`，`.nav-logo` 淡出、
+  `.nav-title` 淡入（CSS 过渡），`.nav-progress` 随滚动增长；与 09 原型逐帧一致。
+  注意这是**移动端 `/mobi/*` 的 navbar**，与 PC 的 `<header>` 是两套完全不同的组件。
+- 偏好 `PREF`（theme/accent/motion/density/frame）与语言写 localStorage，键名与原型一致。
+
 > 说明：全页长截图（fullPage）在 reveal 元素未滚入视口时会显示大片空白，这是滚动渐显的
-> 预期行为，不是内容缺失。验证请实际滚动，或用视口截图逐屏查看。
+> 预期行为，不是内容缺失。移动端 `#mobiApp` 是**独立滚动容器**，验证须滚动该容器
+> （不是 window），或用视口截图逐屏查看。
 
 ## 校验命令
 

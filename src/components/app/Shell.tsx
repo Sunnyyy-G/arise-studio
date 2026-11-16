@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 // 样式：src/styles/components/app/{Shell,Dock,Toast,Tweaks}.css（由 src/app/layout.tsx 统一按序引入）
 /**
  * 应用外壳 —— 对应原型 header / nav / drawer / bottom(dock) /
@@ -261,6 +263,7 @@ export function ToolsBar() {
     <div className="tools">
       <span>桌面端 · 产品评审原型 / 非线上网站　·　iOS 简约风优化版 v2</span>
       <span>
+        <Link href="/mobi/home" className="tools-mobi-link">移动 H5 ↗</Link>{" "}
         <button onClick={() => go("404")}>404状态</button>{" "}
         <button onClick={() => go("privacy")}>隐私</button>{" "}
         <button onClick={() => toast("拟写内容与英文译文均需本人审核；没有接入真实服务")}>使用说明</button>

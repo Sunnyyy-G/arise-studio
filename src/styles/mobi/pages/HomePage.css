@@ -1,0 +1,159 @@
+/* ============================================================
+   Arise Studio · 移动 H5 · 05 / Hero & Capability
+   对应：09 原型 · 05 区块 Hero / portrait / cap-list（规则原样保留）
+   ============================================================ */
+.hero {
+   padding: 8px 2px 0
+}
+
+.hero h1 {
+   font-size: clamp(30px, 8.4vw, 36px);
+   letter-spacing: -.055em;
+   font-weight: 780;
+   margin: 12px 0 14px
+}
+
+.hero h1 .ln {
+   display: block;
+   overflow: hidden
+}
+
+.hero h1 .ln>span {
+   display: block;
+   animation: lineUp .72s var(--ease-out) both;
+   animation-delay: calc(.06s + var(--n, 0)*.1s)
+}
+
+.hero p {
+   font-size: 14.5px;
+   line-height: 1.75
+}
+
+.hero .actions {
+   margin-top: 18px
+}
+
+.portrait {
+   position: relative;
+   overflow: hidden;
+   margin-top: 20px;
+   padding: 22px 20px;
+   min-height: 210px;
+   border-radius: var(--r-xl);
+   color: #fff;
+   background: linear-gradient(155deg, #1B2434, #111A29 52%, #0A111C);
+   box-shadow: var(--sh-3);
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   isolation: isolate
+}
+
+.portrait::before {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   width: 260px;
+   height: 260px;
+   right: -90px;
+   top: -100px;
+   border-radius: 50%;
+   background: radial-gradient(circle, rgba(0, 122, 255, .55), transparent 68%);
+   animation: drift 12s ease-in-out infinite
+}
+
+.portrait::after {
+   content: "A";
+   position: absolute;
+   z-index: -1;
+   right: -4px;
+   bottom: -66px;
+   font: 750 190px/1 var(--font-sans);
+   letter-spacing: -.12em;
+   color: rgba(255, 255, 255, .055)
+}
+
+.portrait .grid-lines {
+   position: absolute;
+   inset: 0;
+   z-index: -1;
+   background-image: linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+   background-size: 28px 28px;
+   mask-image: linear-gradient(180deg, rgba(0, 0, 0, .65), transparent 85%)
+}
+
+.portrait p {
+   color: rgba(226, 236, 248, .72);
+   font-size: 12px
+}
+
+.portrait strong {
+   font-size: 29px;
+   line-height: 1.3;
+   letter-spacing: -.045em;
+   font-weight: 740;
+   color: #fff
+}
+
+.portrait .p-spacer {
+   flex: 1
+}
+
+.portrait .muted {
+   color: rgba(226, 236, 248, .45);
+   font-size: 10.5px
+}
+
+/* Capability list (mobile) */
+.cap-list {
+   display: grid;
+   grid-template-columns: repeat(2, minmax(0, 1fr));
+   gap: 10px
+}
+
+.cap {
+   background: var(--surface);
+   border: 1px solid var(--separator);
+   border-radius: var(--r-m);
+   padding: 13px;
+   box-shadow: var(--sh-1)
+}
+
+.cap .cap-no {
+   font: 650 9.5px var(--font-mono);
+   letter-spacing: .12em;
+   color: var(--accent-ink)
+}
+
+.cap strong {
+   display: block;
+   font-size: 13px;
+   margin: 8px 0 10px;
+   letter-spacing: -.02em
+}
+
+.cap .cap-bar {
+   height: 3px;
+   border-radius: 3px;
+   background: var(--fill);
+   overflow: hidden
+}
+
+.cap .cap-bar i {
+   display: block;
+   height: 100%;
+   width: 0;
+   border-radius: 3px;
+   background: var(--accent);
+   transition: width 1.1s var(--ease-out) .15s
+}
+
+.cap.in .cap-bar i {
+   width: var(--bar, 72%)
+}
+
+.cap .muted {
+   font-size: 10.5px;
+   display: block;
+   margin-top: 8px
+}

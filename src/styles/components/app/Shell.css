@@ -7,8 +7,8 @@
    ============================================================ */
 .tools{position:relative;z-index:31;background:#111318;color:#C9CFDA;font-size:11.5px;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px max(24px,calc((100% - var(--page-w))/2));letter-spacing:.02em}
 .tools span{opacity:.86}
-.tools button{font-size:11px;padding:4px 11px;background:transparent;border-color:rgba(255,255,255,.22);color:#E6EAF2;border-radius:var(--r-pill)}
-.tools button:hover{border-color:#7DB4FF;color:#fff}
+.tools button,.tools .tools-mobi-link{font-size:11px;padding:4px 11px;background:transparent;border:1px solid rgba(255,255,255,.22);color:#E6EAF2;border-radius:var(--r-pill);display:inline-flex;align-items:center}
+.tools button:hover,.tools .tools-mobi-link:hover{border-color:#7DB4FF;color:#fff}
 .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:60;transition:width .12s linear,background-color var(--d2) var(--ease);box-shadow:0 0 12px var(--accent)}
 .shell{min-height:100vh;position:relative;overflow-x:hidden}
 .shell::before{content:"";position:fixed;inset:-20% -10% auto -10%;height:70vh;pointer-events:none;z-index:0;background:radial-gradient(48% 46% at 22% 18%,var(--accent-soft),transparent 70%),radial-gradient(38% 40% at 82% 8%,rgba(88,86,214,.10),transparent 72%);animation:drift 18s ease-in-out infinite}

@@ -1,0 +1,147 @@
+/* ============================================================
+   Arise Studio · 移动 H5 · 07 全屏 H5 模式 / 08 打印
+   对应：09 原型 · @media(max-width:760px) / data-frame="off" / @media print（规则原样保留）
+   必须最后引入（覆盖设备框样式）
+   ============================================================ */
+@media(max-width:760px) {
+  .stage {
+    padding: 0;
+    display: block;
+    min-height: 100dvh
+  }
+
+  .stage::before,
+  .stage-badge,
+  .stage-tools {
+    display: none
+  }
+
+  .device {
+    width: 100%;
+    height: 100dvh;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--bg)
+  }
+
+  .device::before,
+  .device::after {
+    display: none
+  }
+
+  .screen {
+    border-radius: 0
+  }
+
+  .statusbar,
+  .home-ind {
+    display: none
+  }
+
+  .navbar {
+    padding-top: calc(env(safe-area-inset-top) + 6px);
+    min-height: calc(46px + env(safe-area-inset-top))
+  }
+
+  .tabbar {
+    padding-bottom: calc(6px + env(safe-area-inset-bottom))
+  }
+
+  main {
+    padding: 8px 16px calc(20px + env(safe-area-inset-bottom))
+  }
+
+  #toast {
+    top: calc(env(safe-area-inset-top) + 54px)
+  }
+
+  .sheet {
+    bottom: calc(8px + env(safe-area-inset-bottom))
+  }
+}
+
+html[data-frame="off"] .stage {
+  padding: 0;
+  display: block;
+  min-height: 100vh
+}
+
+html[data-frame="off"] .stage::before {
+  display: none
+}
+
+html[data-frame="off"] .device {
+  width: min(100%, 520px);
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--bg)
+}
+
+html[data-frame="off"] .device::before,
+html[data-frame="off"] .device::after {
+  display: none
+}
+
+html[data-frame="off"] .screen {
+  border-radius: 0
+}
+
+@media print {
+
+  .stage::before,
+  .stage-badge,
+  .stage-tools,
+  .statusbar,
+  .navbar,
+  .tabbar,
+  .home-ind,
+  .backdrop,
+  .sheet,
+  #toast,
+  .actions,
+  .toc,
+  .note {
+    display: none !important
+  }
+
+  .device {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff
+  }
+
+  .screen {
+    border-radius: 0;
+    display: block
+  }
+
+  main {
+    overflow: visible;
+    padding: 0
+  }
+
+  body {
+    background: #fff;
+    color: #000
+  }
+
+  .card,
+  .chart-card,
+  .metric,
+  .cap {
+    box-shadow: none;
+    break-inside: avoid
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important
+  }
+}

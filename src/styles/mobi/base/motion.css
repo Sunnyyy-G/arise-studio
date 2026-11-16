@@ -1,0 +1,150 @@
+/* ============================================================
+   Arise Studio · 移动 H5 · 03 MOTION
+   对应：09 原型 · 03 区块（规则原样保留）
+   push/pop 转场、reveal 渐显由 src/components/mobi/MobiApp.tsx 的 mount() 驱动
+   ============================================================ */
+@keyframes pushIn {
+   from {
+      opacity: 0;
+      transform: translate3d(28px, 0, 0) scale(.985)
+   }
+
+   to {
+      opacity: 1;
+      transform: none
+   }
+}
+
+@keyframes popIn {
+   from {
+      opacity: 0;
+      transform: translate3d(-22px, 0, 0) scale(.985)
+   }
+
+   to {
+      opacity: 1;
+      transform: none
+   }
+}
+
+@keyframes floatY {
+
+   0%,
+   100% {
+      transform: translate3d(0, 0, 0)
+   }
+
+   50% {
+      transform: translate3d(0, -10px, 0)
+   }
+}
+
+@keyframes drift {
+   0% {
+      transform: translate3d(-2%, 2%, 0) scale(1)
+   }
+
+   50% {
+      transform: translate3d(4%, -4%, 0) scale(1.08)
+   }
+
+   100% {
+      transform: translate3d(-2%, 2%, 0) scale(1)
+   }
+}
+
+@keyframes toastIn {
+   from {
+      opacity: 0;
+      transform: translate(-50%, -22px) scale(.94)
+   }
+
+   to {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1)
+   }
+}
+
+@keyframes lineUp {
+   from {
+      opacity: 0;
+      transform: translateY(100%)
+   }
+
+   to {
+      opacity: 1;
+      transform: none
+   }
+}
+
+@keyframes flow {
+   0% {
+      top: 0;
+      opacity: 0
+   }
+
+   15% {
+      opacity: 1
+   }
+
+   85% {
+      opacity: 1
+   }
+
+   100% {
+      top: 100%;
+      opacity: 0
+   }
+}
+
+.page {
+   animation: pushIn .46s var(--ease-out) both
+}
+
+.page.pop {
+   animation: popIn .46s var(--ease-out) both
+}
+
+.reveal {
+   opacity: 0;
+   transform: translateY(16px) scale(.99);
+   transition: opacity var(--d3) var(--ease-out), transform var(--d3) var(--ease-out);
+   transition-delay: calc(var(--i, 0)*55ms)
+}
+
+.reveal.in {
+   opacity: 1;
+   transform: none
+}
+
+html[data-motion="lite"] .reveal {
+   transition-duration: .26s;
+   transform: translateY(6px)
+}
+
+html[data-motion="off"] *,
+html[data-motion="off"] *::before,
+html[data-motion="off"] *::after {
+   animation: none !important;
+   transition: none !important
+}
+
+html[data-motion="off"] .reveal {
+   opacity: 1;
+   transform: none
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+   *,
+   *::before,
+   *::after {
+      animation-duration: .001ms !important;
+      transition-duration: .001ms !important
+   }
+
+   .reveal {
+      opacity: 1;
+      transform: none
+   }
+}

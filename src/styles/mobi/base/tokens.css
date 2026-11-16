@@ -1,0 +1,111 @@
+/* ============================================================
+   Arise Studio · 移动 H5 · 01 DESIGN TOKENS
+   对应：09-iOS简约风移动H5交互原型.html · 01 区块（规则原样保留）
+   引入：src/app/mobi/layout.tsx 按顺序统一引入，勿调整顺序
+   注：变量定义在 :root，仅在 mobi 路由树加载，与 PC 路由树隔离
+   ============================================================ */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Segoe UI Variable Display", "Segoe UI", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --ease: cubic-bezier(.32, .72, 0, 1);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --d1: .22s;
+  --d2: .42s;
+  --d3: .72s;
+  --r-xs: 8px;
+  --r-s: 12px;
+  --r-m: 18px;
+  --r-l: 26px;
+  --r-xl: 34px;
+  --r-pill: 999px;
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 20px;
+  --s6: 24px;
+  --s8: 32px;
+  --s10: 40px;
+  --s12: 48px;
+  --s16: 64px;
+  --c-blue: #007AFF;
+  --c-indigo: #5856D6;
+  --c-orange: #FF9500;
+  --c-green: #34C759;
+  --c-teal: #30B0C7;
+  --c-pink: #FF2D55;
+  --accent: var(--c-blue);
+  --accent-soft: rgba(0, 122, 255, .12);
+  --accent-ink: #0058B8;
+  --accent-fill: #0058B8;
+  --on-accent: #FFFFFF;
+  --accent-ink: color-mix(in srgb, var(--accent) 72%, #000);
+  --accent-fill: color-mix(in srgb, var(--accent) 72%, #000);
+  --device-w: 393px;
+  --device-h: 852px;
+}
+
+html[data-accent="indigo"] {
+  --accent: var(--c-indigo);
+  --accent-soft: rgba(88, 86, 214, .14)
+}
+
+html[data-accent="teal"] {
+  --accent: var(--c-teal);
+  --accent-soft: rgba(48, 176, 199, .16)
+}
+
+html[data-theme="light"] {
+  --bg: #F2F2F7;
+  --surface: #FFFFFF;
+  --surface-2: #FAFAFC;
+  --surface-3: #EDEDF2;
+  --label: #101014;
+  --label-2: #3C3C43;
+  --secondary: #5B5B60;
+  --tertiary: #6E6E73;
+  --separator: rgba(60, 60, 67, .11);
+  --fill: rgba(120, 120, 128, .10);
+  --fill-strong: rgba(120, 120, 128, .16);
+  --sh-1: 0 1px 2px rgba(16, 24, 40, .04), 0 6px 18px rgba(16, 24, 40, .045);
+  --sh-2: 0 12px 34px rgba(16, 24, 40, .10);
+  --sh-3: 0 28px 70px rgba(16, 24, 40, .18);
+  --glass: rgba(255, 255, 255, .78);
+  --glass-strong: rgba(255, 255, 255, .92);
+  --note-bg: #FFF8E6;
+  --note-line: #F5DFA8;
+  --note-fg: #7A5B18;
+  --code-bg: #17171C;
+  --code-fg: #E9E9F0;
+  --device-edge: #2B2E35;
+  --status-ink: #101014;
+}
+
+html[data-theme="dark"] {
+  --bg: #000000;
+  --surface: #1C1C1E;
+  --surface-2: #242427;
+  --surface-3: #2C2C2F;
+  --label: #F5F5F7;
+  --label-2: #EBEBF0;
+  --secondary: #AEAEB2;
+  --tertiary: #8E8E93;
+  --separator: rgba(84, 84, 88, .55);
+  --fill: rgba(120, 120, 128, .24);
+  --fill-strong: rgba(120, 120, 128, .36);
+  --sh-1: 0 1px 2px rgba(0, 0, 0, .45), 0 6px 18px rgba(0, 0, 0, .32);
+  --sh-2: 0 12px 34px rgba(0, 0, 0, .55);
+  --sh-3: 0 28px 70px rgba(0, 0, 0, .7);
+  --glass: rgba(24, 24, 27, .78);
+  --glass-strong: rgba(28, 28, 31, .92);
+  --note-bg: #2A2213;
+  --note-line: #5A451C;
+  --note-fg: #E8C77B;
+  --code-bg: #101014;
+  --code-fg: #E9E9F0;
+  --device-edge: #4A4D55;
+  --status-ink: #F5F5F7;
+  --accent-ink: color-mix(in srgb, var(--accent) 68%, #FFFFFF);
+  --accent-fill: color-mix(in srgb, var(--accent) 68%, #FFFFFF);
+  --on-accent: #08172B;
+}
