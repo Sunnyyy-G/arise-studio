@@ -4,10 +4,43 @@
    引入：src/app/layout.tsx 中必须排在最后，勿调整顺序
    来源：原 src/app/globals.css · @media print 段（规则原样保留）
    ============================================================ */
-@media print{
-  .tools,header,footer,.bottom,.actions,.toc,.note,.tweak-fab,.tweak-panel,.progress,#toast,.shell::before{display:none!important}
-  main{padding:0;max-width:none}
-  body{background:#fff;color:#000}
-  .card,.chart-card,.stat,.metric{box-shadow:none;break-inside:avoid}
-  .reveal{opacity:1!important;transform:none!important}
+@media print {
+
+  .tools,
+  header,
+  footer,
+  .bottom,
+  .actions,
+  .toc,
+  .note,
+  .tweak-fab,
+  .tweak-panel,
+  .progress,
+  #toast,
+  .shell::before {
+    display: none !important
+  }
+
+  main {
+    padding: 0;
+    max-width: none
+  }
+
+  body {
+    background: #fff;
+    color: #000
+  }
+
+  .card,
+  .chart-card,
+  .stat,
+  .metric {
+    box-shadow: none;
+    break-inside: avoid
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important
+  }
 }

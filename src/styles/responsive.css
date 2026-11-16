@@ -5,41 +5,189 @@
          否则同特异性规则会被前面的样式覆盖，请勿调整顺序
    来源：原 src/app/globals.css · 08 区块（规则原样保留）
    ============================================================ */
-@media(max-width:1000px){
-  .hero{grid-template-columns:1fr 1fr;gap:var(--s8)}
-  .chart-grid{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .dash{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .detail{grid-template-columns:1fr;gap:var(--s6)}
-  .toc{position:static;display:flex;flex-wrap:wrap;gap:4px}
-  .toc .toc-title{width:100%}
-  .toc button{width:auto}
+@media(max-width:1000px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s8)
+  }
+
+  .chart-grid {
+    grid-template-columns: 1fr
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+
+  .dash {
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+
+  .detail {
+    grid-template-columns: 1fr;
+    gap: var(--s6)
+  }
+
+  .toc {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px
+  }
+
+  .toc .toc-title {
+    width: 100%
+  }
+
+  .toc button {
+    width: auto
+  }
 }
-@media(max-width:760px){
-  h1{font-size:clamp(36px,9vw,52px)}
-  .tools{flex-wrap:wrap;font-size:10.5px;padding:8px 18px}
-  header{padding:12px 18px}
-  header nav{display:none}
-  .menuBtn{display:inline-flex}
-  .drawer.open{display:grid;position:relative;z-index:2;gap:6px;padding:var(--s4) 18px;background:var(--surface-2);border-bottom:1px solid var(--separator);grid-template-columns:repeat(3,1fr)}
-  .drawer.open button{border:0;background:var(--surface);font-size:13px;border-radius:var(--r-m);padding:10px 6px}
-  .drawer.open button.active{background:var(--accent-fill);color:var(--on-accent)}
-  main{padding:var(--s8) 18px 150px}
-  .hero{grid-template-columns:1fr;gap:var(--s8);padding:var(--s4) 0 var(--s10)}
-  .hero p{font-size:16px}
-  .portrait{min-height:300px;padding:var(--s8)}
-  .grid,.stats,.dash{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .section{margin:var(--s12) 0}
-  .filters input{min-width:100%}
-  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .bottom{bottom:0;left:0;right:0;width:100%;transform:none;border-radius:var(--r-l) var(--r-l) 0 0;justify-content:space-around;padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
-  .bottom button{padding:8px 10px;font-size:12px}
-  .bottom .dock-sep{display:none}
-  .tweak-fab{bottom:76px;right:16px}
-  .tweak-panel{bottom:132px;right:16px;width:min(290px,calc(100vw - 32px))}
-  #toast{bottom:82px}
-  .matrix{grid-template-columns:78px repeat(var(--cols),minmax(0,1fr));gap:4px}
-  .matrix .mx-h{height:60px;font-size:9px}
-  .matrix .mx-row{font-size:10px}
+
+@media(max-width:760px) {
+  h1 {
+    font-size: clamp(36px, 9vw, 52px)
+  }
+
+  .tools {
+    flex-wrap: wrap;
+    font-size: 10.5px;
+    padding: 8px 18px
+  }
+
+  header {
+    padding: 12px 18px
+  }
+
+  header nav {
+    display: none
+  }
+
+  .menuBtn {
+    display: inline-flex
+  }
+
+  .drawer.open {
+    display: grid;
+    position: relative;
+    z-index: 2;
+    gap: 6px;
+    padding: var(--s4) 18px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--separator);
+    grid-template-columns: repeat(3, 1fr)
+  }
+
+  .drawer.open button {
+    border: 0;
+    background: var(--surface);
+    font-size: 13px;
+    border-radius: var(--r-m);
+    padding: 10px 6px
+  }
+
+  .drawer.open button.active {
+    background: var(--accent-fill);
+    color: var(--on-accent)
+  }
+
+  main {
+    padding: var(--s8) 18px 150px
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: var(--s8);
+    padding: var(--s4) 0 var(--s10)
+  }
+
+  .hero p {
+    font-size: 16px
+  }
+
+  .portrait {
+    min-height: 300px;
+    padding: var(--s8)
+  }
+
+  .grid,
+  .stats,
+  .dash {
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+
+  .section {
+    margin: var(--s12) 0
+  }
+
+  .filters input {
+    min-width: 100%
+  }
+
+  .flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+
+  .bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transform: none;
+    border-radius: var(--r-l) var(--r-l) 0 0;
+    justify-content: space-around;
+    padding: 8px 6px calc(8px + env(safe-area-inset-bottom))
+  }
+
+  .bottom button {
+    padding: 8px 10px;
+    font-size: 12px
+  }
+
+  .bottom .dock-sep {
+    display: none
+  }
+
+  .tweak-fab {
+    bottom: 76px;
+    right: 16px
+  }
+
+  .tweak-panel {
+    bottom: 132px;
+    right: 16px;
+    width: min(290px, calc(100vw - 32px))
+  }
+
+  #toast {
+    bottom: 82px
+  }
+
+  .matrix {
+    grid-template-columns: 78px repeat(var(--cols), minmax(0, 1fr));
+    gap: 4px
+  }
+
+  .matrix .mx-h {
+    height: 60px;
+    font-size: 9px
+  }
+
+  .matrix .mx-row {
+    font-size: 10px
+  }
 }
-@media(max-width:480px){.grid,.stats,.dash{grid-template-columns:1fr}.donut-wrap svg{width:150px;height:150px}}
+
+@media(max-width:480px) {
+
+  .grid,
+  .stats,
+  .dash {
+    grid-template-columns: 1fr
+  }
+
+  .donut-wrap svg {
+    width: 150px;
+    height: 150px
+  }
+}

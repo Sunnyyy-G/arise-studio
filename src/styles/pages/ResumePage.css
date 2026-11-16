@@ -4,10 +4,46 @@
    引入：src/app/layout.tsx 按顺序统一引入，勿调整顺序
    来源：原 src/app/globals.css · 06 区块 mini visuals 段（规则原样保留）
    ============================================================ */
-.timeline-list{display:flex;flex-direction:column;gap:0;margin:var(--s6) 0}
-.timeline-list .tl-item{position:relative;padding:0 0 var(--s8) var(--s8);border-left:2px solid var(--separator)}
-.timeline-list .tl-item:last-child{border-left-color:transparent;padding-bottom:0}
-.timeline-list .tl-item::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:3px solid var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-.timeline-list .tl-item h3{font-size:18px;margin:8px 0 6px}
-.timeline-list .tl-item p{font-size:14px}
-.timeline-list .tl-item .btn{margin-top:var(--s3)}
+.timeline-list {
+   display: flex;
+   flex-direction: column;
+   gap: 0;
+   margin: var(--s6) 0
+}
+
+.timeline-list .tl-item {
+   position: relative;
+   padding: 0 0 var(--s8) var(--s8);
+   border-left: 2px solid var(--separator)
+}
+
+.timeline-list .tl-item:last-child {
+   border-left-color: transparent;
+   padding-bottom: 0
+}
+
+.timeline-list .tl-item::before {
+   content: "";
+   position: absolute;
+   left: -7px;
+   top: 6px;
+   width: 12px;
+   height: 12px;
+   border-radius: 50%;
+   background: var(--surface);
+   border: 3px solid var(--accent);
+   box-shadow: 0 0 0 4px var(--accent-soft)
+}
+
+.timeline-list .tl-item h3 {
+   font-size: 18px;
+   margin: 8px 0 6px
+}
+
+.timeline-list .tl-item p {
+   font-size: 14px
+}
+
+.timeline-list .tl-item .btn {
+   margin-top: var(--s3)
+}
